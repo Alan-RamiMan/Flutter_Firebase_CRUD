@@ -14,6 +14,10 @@ class AddPage extends StatefulWidget {
 
 class _AddPage extends State<AddPage> {
   final _persona_nombre = TextEditingController();
+  final _persona_apellido = TextEditingController();
+  final _persona_rut = TextEditingController();
+  final _persona_correo = TextEditingController();
+  final _persona_direccion = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -24,12 +28,64 @@ class _AddPage extends State<AddPage> {
         autofocus: false,
         validator: (value) {
           if (value == null || value.trim().isEmpty) {
-            return 'This field is required';
+            return 'Campo Obligatorio';
           }
         },
         decoration: InputDecoration(
             contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
             hintText: "Nombre",
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))));
+    final apellidoField = TextFormField(
+        controller: _persona_apellido,
+        autofocus: false,
+        validator: (value) {
+          if (value == null || value.trim().isEmpty) {
+            return 'Campo Obligatorio';
+          }
+        },
+        decoration: InputDecoration(
+            contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+            hintText: "Apellido",
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))));
+    final rutField = TextFormField(
+        controller: _persona_rut,
+        autofocus: false,
+        validator: (value) {
+          if (value == null || value.trim().isEmpty) {
+            return 'Campo Obligatorio';
+          }
+        },
+        decoration: InputDecoration(
+            contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+            hintText: "Rut",
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))));
+    final correoField = TextFormField(
+        controller: _persona_correo,
+        autofocus: false,
+        validator: (value) {
+          if (value == null || value.trim().isEmpty) {
+            return 'Campo Obligatorio';
+          }
+        },
+        decoration: InputDecoration(
+            contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+            hintText: "Email",
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))));
+    final direccionField = TextFormField(
+        controller: _persona_direccion,
+        autofocus: false,
+        validator: (value) {
+          if (value == null || value.trim().isEmpty) {
+            return 'Campo Obligatorio';
+          }
+        },
+        decoration: InputDecoration(
+            contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+            hintText: "Direccion",
             border:
                 OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))));
 
@@ -54,8 +110,12 @@ class _AddPage extends State<AddPage> {
         padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () async {
           if (_formKey.currentState!.validate()) {
-            var response =
-                await FirebaseCrud.addPersona(nombre: _persona_nombre.text);
+            var response = await FirebaseCrud.addPersona(
+                nombre: _persona_nombre.text,
+                apellido: _persona_apellido.text,
+                rut: _persona_rut.text,
+                correo: _persona_correo.text,
+                direccion: _persona_direccion.text);
             if (response.code != 200) {
               showDialog(
                   context: context,
@@ -86,7 +146,7 @@ class _AddPage extends State<AddPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text('CRUD PERSONAS'),
+        title: const Text('Ingresar Datos'),
         backgroundColor: Theme.of(context).primaryColor,
       ),
       body: Column(
@@ -100,10 +160,19 @@ class _AddPage extends State<AddPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  const SizedBox(height: 25.0),
                   nombreField,
                   const SizedBox(height: 45.0),
+                  apellidoField,
+                  const SizedBox(height: 45.0),
+                  rutField,
+                  const SizedBox(height: 45.0),
+                  correoField,
+                  const SizedBox(height: 45.0),
+                  direccionField,
+                  const SizedBox(height: 45.0),
                   SaveButon,
+                  const SizedBox(height: 15.0),
+                  viewListbutton,
                   const SizedBox(height: 15.0),
                 ],
               ),

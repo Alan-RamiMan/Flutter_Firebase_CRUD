@@ -54,12 +54,18 @@ class _ListPage extends State<ListPage> {
                   return Card(
                       child: Column(children: [
                     ListTile(
-                      title: Text(e["nombre"]),
+                      title: Text(e["nombre"] + ' ' + e["apellido"]),
                       subtitle: Container(
                         child: (Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text("Nombre: " + e['nombre'],
+                            // Text("Apellido: " + e['apellido'],
+                            //     style: const TextStyle(fontSize: 12)),
+                            Text("Rut: " + e['rut'],
+                                style: const TextStyle(fontSize: 12)),
+                            Text("Email: " + e['correo'],
+                                style: const TextStyle(fontSize: 12)),
+                            Text("Direccion: " + e['direccion'],
                                 style: const TextStyle(fontSize: 12)),
                           ],
                         )),
@@ -74,14 +80,19 @@ class _ListPage extends State<ListPage> {
                             primary: const Color.fromARGB(255, 143, 133, 226),
                             textStyle: const TextStyle(fontSize: 20),
                           ),
-                          child: const Text('Edit'),
+                          child: const Text('Editar'),
                           onPressed: () {
                             Navigator.pushAndRemoveUntil<dynamic>(
                               context,
                               MaterialPageRoute<dynamic>(
                                 builder: (BuildContext context) => EditPage(
-                                  persona:
-                                      Persona(uid: e.id, nombre: e["nombre"]),
+                                  persona: Persona(
+                                      uid: e.id,
+                                      nombre: e["nombre"],
+                                      apellido: e["apellido"],
+                                      rut: e["rut"],
+                                      correo: e["correo"],
+                                      direccion: e["direccion"]),
                                 ),
                               ),
                               (route) =>
@@ -95,7 +106,7 @@ class _ListPage extends State<ListPage> {
                             primary: const Color.fromARGB(255, 143, 133, 226),
                             textStyle: const TextStyle(fontSize: 20),
                           ),
-                          child: const Text('Delete'),
+                          child: const Text('Eliminar'),
                           onPressed: () async {
                             var response =
                                 await FirebaseCrud.deletePersona(docId: e.id);

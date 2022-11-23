@@ -6,14 +6,14 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('HOME'),
+        title: Text('Home CRUD Personas'),
       ),
       body: ListView(
         children: <Widget>[
           _opcionesMenu(
-              context, Icons.select_all, 'addPersona', 'Agregar Persona'),
+              context, Icons.group_add, 'addPersona', 'Agregar Datos Persona'),
           _opcionesMenu(
-              context, Icons.calendar_view_day, 'listPersonas', 'Ver Personas'),
+              context, Icons.list, 'listPersonas', 'Ver Listado de Personas'),
         ],
       ),
       /*body: Center(
