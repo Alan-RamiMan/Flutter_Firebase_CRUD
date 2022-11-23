@@ -77,7 +77,7 @@ class _ListPage extends State<ListPage> {
                         TextButton(
                           style: TextButton.styleFrom(
                             padding: const EdgeInsets.all(5.0),
-                            primary: const Color.fromARGB(255, 143, 133, 226),
+                            primary: const Color.fromARGB(255, 33, 150, 243),
                             textStyle: const TextStyle(fontSize: 20),
                           ),
                           child: const Text('Editar'),
@@ -103,7 +103,7 @@ class _ListPage extends State<ListPage> {
                         TextButton(
                           style: TextButton.styleFrom(
                             padding: const EdgeInsets.all(5.0),
-                            primary: const Color.fromARGB(255, 143, 133, 226),
+                            primary: Color.fromARGB(255, 239, 34, 7),
                             textStyle: const TextStyle(fontSize: 20),
                           ),
                           child: const Text('Eliminar'),

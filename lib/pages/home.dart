@@ -11,9 +11,9 @@ class Home extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           _opcionesMenu(
-              context, Icons.group_add, 'addPersona', 'Agregar Datos Persona'),
+              context, Icons.group_add, 'addPersona', 'Agregar Personas'),
           _opcionesMenu(
-              context, Icons.list, 'listPersonas', 'Ver Listado de Personas'),
+              context, Icons.list, 'listPersonas', 'Listado de Personas'),
         ],
       ),
       /*body: Center(

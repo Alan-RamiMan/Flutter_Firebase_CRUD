@@ -1,3 +1,4 @@
+import 'package:flutter_application_1/pages/home.dart';
 import 'package:flutter_application_1/pages/listpages.dart';
 
 import 'package:flutter/material.dart';
@@ -101,6 +102,18 @@ class _AddPage extends State<AddPage> {
         },
         child: const Text('Ver lista de Personas'));
 
+    final homeListbutton = TextButton(
+        onPressed: () {
+          Navigator.pushAndRemoveUntil<dynamic>(
+            context,
+            MaterialPageRoute<dynamic>(
+              builder: (BuildContext context) => Home(),
+            ),
+            (route) => false, //To disable back feature set to false
+          );
+        },
+        child: const Text('Volver a Home'));
+
     final SaveButon = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(30.0),
@@ -136,7 +149,7 @@ class _AddPage extends State<AddPage> {
           }
         },
         child: Text(
-          "Save",
+          "Guardar",
           style: TextStyle(color: Theme.of(context).primaryColorLight),
           textAlign: TextAlign.center,
         ),
@@ -173,6 +186,8 @@ class _AddPage extends State<AddPage> {
                   SaveButon,
                   const SizedBox(height: 15.0),
                   viewListbutton,
+                  const SizedBox(height: 15.0),
+                  homeListbutton,
                   const SizedBox(height: 15.0),
                 ],
               ),

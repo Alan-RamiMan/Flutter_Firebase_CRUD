@@ -54,14 +54,14 @@ class _EditPage extends State<EditPage> {
             contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
             hintText: "Name",
             border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))));
+                OutlineInputBorder(borderRadius: BorderRadius.circular(10.0))));
 
     final nombreField = TextFormField(
         controller: _persona_nombre,
         autofocus: false,
         validator: (value) {
           if (value == null || value.trim().isEmpty) {
-            return 'This field is required';
+            return 'El campo es obligatorio';
           }
         },
         decoration: InputDecoration(
@@ -74,7 +74,7 @@ class _EditPage extends State<EditPage> {
         autofocus: false,
         validator: (value) {
           if (value == null || value.trim().isEmpty) {
-            return 'This field is required';
+            return 'El campo es obligatorio';
           }
         },
         decoration: InputDecoration(
@@ -87,7 +87,7 @@ class _EditPage extends State<EditPage> {
         autofocus: false,
         validator: (value) {
           if (value == null || value.trim().isEmpty) {
-            return 'This field is required';
+            return 'El campo es obligatorio';
           }
         },
         decoration: InputDecoration(
@@ -100,7 +100,7 @@ class _EditPage extends State<EditPage> {
         autofocus: false,
         validator: (value) {
           if (value == null || value.trim().isEmpty) {
-            return 'This field is required';
+            return 'El campo es obligatorio';
           }
         },
         decoration: InputDecoration(
@@ -113,7 +113,7 @@ class _EditPage extends State<EditPage> {
         autofocus: false,
         validator: (value) {
           if (value == null || value.trim().isEmpty) {
-            return 'This field is required';
+            return 'El campo es obligatorio';
           }
         },
         decoration: InputDecoration(
@@ -127,7 +127,7 @@ class _EditPage extends State<EditPage> {
           Navigator.pushAndRemoveUntil<dynamic>(
             context,
             MaterialPageRoute<dynamic>(
-              builder: (BuildContext context) => ListPage(),
+              builder: (BuildContext context) => Home(),
             ),
             (route) => false, //if you want to disable back feature set to false
           );
@@ -170,7 +170,7 @@ class _EditPage extends State<EditPage> {
           }
         },
         child: Text(
-          "Update",
+          "Actualizar",
           style: TextStyle(color: Theme.of(context).primaryColorLight),
           textAlign: TextAlign.center,
         ),
@@ -197,6 +197,14 @@ class _EditPage extends State<EditPage> {
                   DocIDField,
                   const SizedBox(height: 25.0),
                   nombreField,
+                  const SizedBox(height: 35.0),
+                  apellidoField,
+                  const SizedBox(height: 35.0),
+                  rutField,
+                  const SizedBox(height: 35.0),
+                  correoField,
+                  const SizedBox(height: 35.0),
+                  direccionField,
                   const SizedBox(height: 35.0),
                   SaveButon,
                   const SizedBox(height: 15.0),
